@@ -71,15 +71,13 @@ class UserAdmin(BaseUserAdmin):
                 "fields": (
                     "email",
                     "username",
-                    "first_name",
-                    "last_name",
                     "password1",
                     "password2",
                 ),
             },
         ),
     )
-    search_fields = ["email", "username", "first_name", "last_name"]
+    search_fields = ["email", "username"]
 
 
 admin.site.register(User, UserAdmin)

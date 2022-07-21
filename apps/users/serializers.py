@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     gender = serializers.CharField(source="profile.gender")
     first_name = serializers.SerializerMethodField()
     last_name = serializers.SerializerMetaField()
-    full_name = serializers.SerializerMethodField(source="get_full_name")
+    # full_name = serializers.SerializerMethodField(source="get_full_name")
 
     class Meta:
         model = User
@@ -23,11 +23,11 @@ class UserSerializer(serializers.ModelSerializer):
             "gender",
         ]
 
-    def get_first_name(self, obj):
-        return obj.first_name.title()
+    # def get_first_name(self, obj):
+    #     return obj.first_name.title()
 
-    def get_last_name(self, obj):
-        return obj.last_name.title()
+    # def get_last_name(self, obj):
+    #     return obj.last_name.title()
 
 
 class CreateUserSerializer(UserCreateSerializer):
