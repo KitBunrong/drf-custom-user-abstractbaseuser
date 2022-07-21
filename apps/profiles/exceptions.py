@@ -1,8 +1,10 @@
 from rest_framework import APIException
 
+
 class ProfileNotFound(APIException):
     status = 404
-    default_detail = 'The requested profile does not exists'
+    default_detail = "The requested profile does not exists"
+
 
 class NotYourProfile(APIException):
     status = 403

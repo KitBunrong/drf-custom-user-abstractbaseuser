@@ -6,6 +6,7 @@ from .models import Profile
 from .renderers import ProfileJSONRenderer
 from .serializers import ProfileSerializer
 
+
 class GetProfileAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     renderer_classes = [ProfileJSONRenderer]
@@ -13,5 +14,7 @@ class GetProfileAPIView(APIView):
     def get(self, request):
         user = self.request.user
         user_profile = Profile.objects.get(user=user)
-        serializer = ProfileSerializer(user_profile, context={'request': request})
+        serializer = ProfileSerializer(
+            user_profile, context={"request": request}
+        )
         return Response(serializer.data, status=status.HTTP_200_OK)
