@@ -24,6 +24,14 @@ class ProfileSerializer(serializers.ModelSerializer):
         ]
 
     def get_full_name(self, obj):
-        first_name = obj.user.first_name.title()
-        last_name = obj.user.last_name.title()
+        first_name = obj.user.first_name
+        last_name = obj.user.last_name
+        if first_name is None and last_name is None:
+            return ""
         return f"{first_name} {last_name}"
+
+
+class UpdateProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ["about_me", "gender"]
